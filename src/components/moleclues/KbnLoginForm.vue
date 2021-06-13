@@ -120,7 +120,10 @@ export default {
       this.error = ''
 
       this.$nextTick(() => {
-        this.onLogin({ email: this.email, password: this.password })
+        this.onLogin({
+          email: this.email,
+          password: this.password
+        })
           .catch(err => {
             this.error = err.message
           })

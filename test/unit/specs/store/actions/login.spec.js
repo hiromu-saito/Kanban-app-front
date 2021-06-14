@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import * as types from '@/store/mutation-types'
 
 // loginアクション内の依存関係をモック化する
@@ -9,14 +8,15 @@ const mockLoginAction = login => {
   // 注入関数でAuth APIモジュールをモック化する
   const actionsMocks = actionsInjector({
     '../api': {
-      Auth: {login}
+      Auth: { login }
     }
   })
+
   return actionsMocks.default.login
 }
 
 describe('loginアクション', () => {
-  const email = 'foo@domain.com'
+  const address = 'foo@domain.com'
   const password = '12345678'
   let commit
   let future
@@ -26,17 +26,17 @@ describe('loginアクション', () => {
     const userId = 1
 
     beforeEach(done => {
-      const login = authInfo => Promise.resolve({token, userId})
+      const login = authInfo => Promise.resolve({ token, userId })
       const action = mockLoginAction(login)
       commit = sinon.spy()
 
       // loginアクションの実行
-      future = action({commit}, {email, password})
-      Vue.nextTick(done)
+      future = action({ commit }, { address, password })
+      future.then(() => done())
     })
 
     it('成功となること', () => {
-      // commitが呼ばれてるかチェック
+      // commitが呼ばれているかチェック
       expect(commit.called).to.equal(true)
       expect(commit.args[0][0]).to.equal(types.AUTH_LOGIN)
       expect(commit.args[0][1].token).to.equal(token)
@@ -51,10 +51,11 @@ describe('loginアクション', () => {
       commit = sinon.spy()
 
       // loginアクションの実行
-      future = action({commit})
-      Vue.nextTick(done)
+      future = action({ commit })
+      future.catch(() => done())
     })
-    it('失敗となりこと', done => {
+
+    it('失敗となること', done => {
       // commitが呼ばれていないかチェック
       expect(commit.called).to.equal(false)
 

@@ -35,7 +35,7 @@
     </div>
     <div class="form-actions">
       <kbn-button
-        :disabled="disabledLoginAction"
+        :disabled="disableLoginAction"
         @click="handleClick">
         ログイン
       </kbn-button>

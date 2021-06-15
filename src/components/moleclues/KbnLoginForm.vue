@@ -28,7 +28,7 @@
         @focus="resetError"
       >
       <ul class="validation-errors">
-        <li v-if="validation.password.required">
+        <li v-if="!validation.password.required">
           パスワードが入力されていません
         </li>
       </ul>

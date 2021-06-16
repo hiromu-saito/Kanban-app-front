@@ -8,9 +8,9 @@ export default {
   name: 'KbnBoardView',
 
   // /* NOTE: ErrorBoundary の動作確認ためのコード
-  // created(){
-  //   throw new Error('レンダリングに失敗しました！')
-  // }
+  created(){
+    throw new Error('レンダリングに失敗しました！')
+  }
   // */
 }
 /* eslint-enable */

@@ -1,5 +1,5 @@
 import * as types from './mutation-types'
-import {Auth} from '../api'
+import {Auth, Task} from '../api'
 
 export default {
   login: ({ commit }, authInfo) => {
@@ -10,7 +10,6 @@ export default {
       .catch(err => { throw err })
   },
   fetchList: ({ commit }) => {
-    // TODO
     throw new Error('fetchList action should be implement')
   },
   addTask: ({ commit }) => {
@@ -21,9 +20,12 @@ export default {
     // TODO
     throw new Error('updateTask action should be implement')
   },
-  removeTask: ({ commit }) => {
-    // TODO
-    throw new Error('removeTask action should be implement')
+  removeTask: ({ commit }, taskInfo) => {
+    return Task.removeTask(taskInfo)
+      .then(() => {
+        commit(types.REMOVE_TASK, taskInfo)
+      })
+      .catch(err => { throw err })
   },
   logout: ({ commit }) => {
     // TODO

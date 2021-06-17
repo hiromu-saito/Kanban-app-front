@@ -1,9 +1,9 @@
 import Auth from './auth'
 import List from './list'
-import Task from './task'
+import Tasks from './tasks'
 
 export {
   Auth,
   List,
-  Task
+  Tasks
 }

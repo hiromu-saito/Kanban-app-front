@@ -17,11 +17,13 @@ export default {
     throw new Error('UPDATE_TASKmutation should be implemented')
   },
   [types.REMOVE_TASK] (state, payload) {
-    // TODO;
-    throw new Error('REMOVE_TASK mutation should be implemented')
+    const {id, listId} = payload
+    for (let i = 0; i < state.board.lists.length; i++) {
+      const list = state.board.lists[i]
+      if (list.id !== listId) { continue }
+      list.items = list.items.filter(item => item.id !== id)
+    }
   },
   [types.AUTH_LOGOUT] (state, payload) {
-    // TODO;
-    throw new Error('AUTH_LOGOUT mutation should be implemented')
   }
 }

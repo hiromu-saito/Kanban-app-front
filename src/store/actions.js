@@ -12,9 +12,14 @@ export default {
   fetchList: ({ commit }) => {
     throw new Error('fetchList action should be implement')
   },
-  addTask: ({ commit }) => {
+  addTask: ({ commit }, taskInfo) => {
     // TODO
-    throw new Error('addTask action should be implement')
+    return Task.addTask(taskInfo)
+      .then(({id}) => {
+        taskInfo.id = id
+        commit(types.ADD_TASK, taskInfo)
+      })
+      .catch(err => { throw err })
   },
   updateTask: ({ commit }) => {
     // TODO

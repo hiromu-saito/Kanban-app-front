@@ -1,7 +1,7 @@
 <template>
   <div>
     {{ task.name }}
-    <kbn-icon @click="handleClick">×</kbn-icon>
+    <kbn-icon @click="removeTask">×</kbn-icon>
   </div>
 </template>
 
@@ -20,8 +20,10 @@ export default {
     }
   },
   methods: {
-    handleClick () {
-      this.$emit('click', this.task.id)
+    removeTask () {
+      return this.$store.dispatch('removeTask', this.task)
+        .then(() => {})
+        .catch(() => alert('処理に失敗しました'))
     }
   }
 }

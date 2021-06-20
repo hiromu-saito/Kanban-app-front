@@ -23,4 +23,15 @@ describe('KbnTaskListHeader', () => {
       })
     })
   })
+  describe('イベント', () => {
+    describe('タスクフォームの追加不可', () => {
+      it('イベントが発火されないこと', () => {
+        const listHeader = mount(KbnTaskListHeader, {
+          propsData: {disableAddTaskForm: true}
+        })
+        listHeader.find('button').trigger('click')
+        expect(listHeader.emitted().click).to.equal(undefined)
+      })
+    })
+  })
 })

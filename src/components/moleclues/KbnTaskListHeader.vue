@@ -1,7 +1,9 @@
 <template>
   <div>
     <span><slot/></span>
-    <KbnIcon @click="addTaskForm">
+    <KbnIcon
+      :disabled="disableAddTaskForm"
+      @click="handleClick">
       ＋
     </KbnIcon>
   </div>
@@ -16,9 +18,14 @@ export default {
     KbnIcon
   },
   props: {
-    addTaskForm: {
-      type: Function,
-      required: true
+    disableAddTaskForm: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    handleClick (ev) {
+      this.$emit('click', ev)
     }
   }
 }

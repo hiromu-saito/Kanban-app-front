@@ -46,7 +46,7 @@ describe('KbnTaskCard', () => {
   //       Vuex
   //     })
   //     sinon.spy(taskCard.vm, 'throwReject')
-      
+
   //     await taskCard.find('button').trigger('click')
   //     expect(actions.removeTask.called).to.equal(true)
   //     const callInfo = taskCard.vm.throwReject

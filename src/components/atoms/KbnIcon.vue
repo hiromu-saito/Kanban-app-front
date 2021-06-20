@@ -1,5 +1,6 @@
 <template>
   <button
+    :disabled="disabled"
     type="text"
     @click="handleClick">
     <slot/>
@@ -9,6 +10,12 @@
 <script>
 export default {
   name: 'KbnIcon',
+  props: {
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     handleClick (ev) {
       this.$emit('click', ev)

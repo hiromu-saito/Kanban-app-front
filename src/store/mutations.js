@@ -8,8 +8,12 @@ export default {
     state.lists = payload
   },
   [types.ADD_TASK] (state, payload) {
-    // TODO;
-    throw new Error('.ADD_TASK mutation should be implemented')
+    const {id, listId, name} = payload
+    let list
+    state.lists.forEach(l => {
+      if (l.id === listId) { list = l }
+    })
+    list.items.push({id, name})
   },
   [types.UPDATE_TASK] (state, payload) {
     // TODO;

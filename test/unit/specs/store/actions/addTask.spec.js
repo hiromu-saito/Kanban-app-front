@@ -4,7 +4,7 @@ const addTaskMock = addTask => {
   const injector = require('inject-loader!@/store/actions')
   const actionsMock = injector({
     '../api': {
-      Task: {addTask}
+      Tasks: {addTask}
     }
   })
   return actionsMock.default.addTask

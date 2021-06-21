@@ -4,7 +4,7 @@ const makeFetchListAction = fetchList => {
   const injector = require('inject-loader!@/store/actions')
   const actionsMock = injector({
     '../api': {
-      Task: {fetchList}
+      Tasks: {fetchList}
     }
   })
   return actionsMock.default.fetchList

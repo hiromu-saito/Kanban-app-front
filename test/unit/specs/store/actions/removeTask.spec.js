@@ -6,7 +6,7 @@ const mockRemoveTaskAction = removeTask => {
 
   const actionsMocks = actionsInjector({
     '../api': {
-      Task: { removeTask }
+      Tasks: { removeTask }
     }
   })
   return actionsMocks.default.removeTask

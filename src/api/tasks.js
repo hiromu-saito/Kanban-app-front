@@ -20,5 +20,16 @@ export default {
           reject(new Error(err.response.data.message || err.message))
         })
     })
+  },
+  fetchList: () => {
+    return new Promise((resolve, reject) => {
+      client.get('/lists')
+        .then(res => {
+          resolve({lists: res.data.lists})
+        })
+        .catch(err => {
+          reject(new Error(err.response.data.message || err.message))
+        })
+    })
   }
 }

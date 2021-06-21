@@ -64,4 +64,43 @@ describe('TasksAPIモジュール', () => {
       })
     })
   })
+  describe('fetchList', () => {
+    describe('成功', () => {
+      it('タスクリストが帰ってくること', done => {
+        const adapter = config => {
+          return new Promise((resolve, reject) => {
+            resolve({data: {lists: [
+              {id: 1, name: 'TODO', items: [{id: 1, name: 'task', description: 'description'}]},
+              {id: 2, name: 'PENDING', items: [{id: 1, name: 'task', description: 'description'}]}
+            ]}})
+          })
+        }
+        const tasksMock = mockTasks(adapter)
+        tasksMock.fetchList()
+          .then(res => {
+            expect(res.lists.length).to.equal(2)
+            expect(res.lists[0].name).to.equal('TODO')
+            expect(res.lists[1].name).to.equal('PENDING')
+          })
+          .then(done, done)
+      })
+    })
+    describe('失敗', () => {
+      it('エラーメッセージを取得できること', done => {
+        const adapter = config => {
+          return new Promise((resolve, reject) => {
+            const err = new Error('failed fetchList')
+            err.response = {data: 'failed fetchList'}
+            reject(err)
+          })
+        }
+        const tasksMock = mockTasks(adapter)
+        tasksMock.fetchList()
+          .catch(err => {
+            expect(err.message).to.equal('failed fetchList')
+          })
+          .then(done, done)
+      })
+    })
+  })
 })

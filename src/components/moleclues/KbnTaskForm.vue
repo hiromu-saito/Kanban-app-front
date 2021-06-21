@@ -1,18 +1,20 @@
 <template>
-  <div>
+  <div class="task-form">
     <input
       v-model="name"
       type="text"
       placeholder="タスク...">
-    <kbn-button
-      :disabled="disableAddTask"
-      @click.prevent="addTask">
-      追加
-    </kbn-button>
-    <kbn-button
-      @click.prevent="cancelTask">
-      キャンセル
-    </kbn-button>
+    <div>
+      <kbn-button
+        :disabled="disableAddTask"
+        @click.prevent="addTask">
+        追加
+      </kbn-button>
+      <kbn-button
+        @click.prevent="cancelTask">
+        キャンセル
+      </kbn-button>
+    </div>
   </div>
 </template>
 
@@ -51,6 +53,16 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.task-form{
+  width: 90%;
+  margin: 10px auto;
+  border: dotted 1px #000;
+  text-align: center;
+}
+.task-form div {
+  display: flex;
+  justify-content: space-around;
+}
 
 </style>

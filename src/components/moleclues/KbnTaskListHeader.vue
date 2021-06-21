@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list-header">
     <span><slot/></span>
     <KbnIcon
       :disabled="disableAddTaskForm"
@@ -31,6 +31,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.list-header{
+  display: flex;
+  justify-content:space-between ;
+  border: 1px solid #000;
+}
 
 </style>

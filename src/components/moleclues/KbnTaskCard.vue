@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="task-card">
     {{ task.name }}
     <kbn-icon @click="removeTask">×</kbn-icon>
   </div>
@@ -29,6 +29,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.task-card{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px auto;
+  border: solid 1px #000;
+}
 
 </style>

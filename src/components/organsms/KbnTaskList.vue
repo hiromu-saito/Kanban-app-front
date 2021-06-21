@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="task-list">
     <kbn-task-list-header
-      :disabled="disableAddTaskForm"
+      :disabled="disabledAddTaskForm"
       @click.prevent="addTaskForm">
       {{ list. name }}
     </kbn-task-list-header>
@@ -55,6 +55,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.task-list{
+  width: 200px;
+}
 </style>

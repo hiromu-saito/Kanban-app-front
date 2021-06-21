@@ -1,7 +1,7 @@
 <template>
   <div>
     <input
-      v-model="taskName"
+      v-model="name"
       type="text"
       placeholder="タスク...">
     <kbn-button
@@ -25,23 +25,27 @@ export default {
     KbnButton
   },
   props: {
-    addTask: {
-      type: Function,
-      required: true
-    },
-    cancelTask: {
-      type: Function,
+    listId: {
+      type: Number,
       required: true
     }
   },
   data () {
     return {
-      taskName: ''
+      name: ''
     }
   },
   computed: {
     disableAddTask () {
-      return this.taskName === ''
+      return this.name === ''
+    }
+  },
+  methods: {
+    addTask () {
+      this.$emit('addTask', {listId: this.listId, name: this.name})
+    },
+    cancelTask () {
+      this.$emit('cancelTask')
     }
   }
 }

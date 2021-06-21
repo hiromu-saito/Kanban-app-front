@@ -7,8 +7,7 @@ describe('KbnTaskForm', () => {
     beforeEach(done => {
       taskForm = mount(KbnTaskForm, {
         propsData: {
-          addTask: () => {},
-          cancelTask: () => {}
+          listId: 1
         }
       })
       taskForm.vm.$nextTick(done)
@@ -21,7 +20,7 @@ describe('KbnTaskForm', () => {
     })
     describe('入力あり', () => {
       it('追加ボタンが押せること', () => {
-        taskForm.setData({taskName: 'task'})
+        taskForm.setData({name: 'task'})
         expect(taskForm.vm.disableAddTask).to.equal(false)
       })
     })

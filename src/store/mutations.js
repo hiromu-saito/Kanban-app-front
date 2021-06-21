@@ -5,8 +5,7 @@ export default {
     state.auth = payload
   },
   [types.FETCH_ALL_TASKLIST] (state, payload) {
-    // TODO;
-    throw new Error('FETCH_ALL_TASKLIST mutation should be implemented')
+    state.lists = payload
   },
   [types.ADD_TASK] (state, payload) {
     // TODO;

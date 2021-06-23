@@ -1,30 +1,30 @@
 // propatyはdisableaction+メソッド
 import {mount} from '@vue/test-utils'
-import KbnBoardNavigation from '@/components/moleclues/KbnBoardNavication'
+import KbnBoardNavigation from '@/components/moleclues/KbnBoardNavigation'
 
 describe('KbnBoardNavigataion', () => {
   describe('propaty', () => {
-    describe('logOff', () => {
+    describe('logout', () => {
       let BoardNavigataion
-      let logOffStub
+      let logoutStub
       beforeEach(done => {
-        logOffStub = sinon.stub()
+        logoutStub = sinon.stub()
         BoardNavigataion = mount(KbnBoardNavigation, {
           propsData: {
-            logOff: logOffStub
+            logout: logoutStub
           }
         })
         BoardNavigataion.vm.$nextTick(done)
       })
       describe('resolve', () => {
         it('resoleveされること', done => {
-          logOffStub.resolves()
+          logoutStub.resolves()
           // クリック
           BoardNavigataion.find('button').trigger('click')
-          expect(logOffStub.called).to.equal(false)
+          expect(logoutStub.called).to.equal(false)
 
           BoardNavigataion.vm.$nextTick(() => {
-            expect(logOffStub.called).to.equal(true)
+            expect(logoutStub.called).to.equal(true)
             expect(BoardNavigataion.vm.progress).to.equal(true)
             BoardNavigataion.vm.$nextTick(() => {
               expect(BoardNavigataion.vm.progress).to.equal(false)

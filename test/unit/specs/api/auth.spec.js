@@ -52,4 +52,24 @@ describe('Auth API モジュール', () => {
       })
     })
   })
+  describe('logout', () => {
+    describe('失敗', () => {
+      it('エラーメッセージが帰ること', done => {
+        const message = 'failed logout'
+        const adapter = config => {
+          return new Promise((resolve, reject) => {
+            const err = new Error(message)
+            err.response = {data: {message}}
+            reject(err)
+          })
+        }
+        const auth = mockAuth(adapter)
+        auth.logout()
+          .catch(err => {
+            expect(err.message).to.equal(message)
+          })
+          .then(done, done)
+      })
+    })
+  })
 })

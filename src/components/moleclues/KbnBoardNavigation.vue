@@ -2,12 +2,17 @@
   <div class="board-nav">
     <h1>Kanban-App</h1>
     <KbnButton
-      :disabled="progress"
+      v-show="!progress"
       class="kbn-button"
       type="text"
       @click.prevent="handleClick">
       ログオフ
     </KbnButton>
+    <span
+      v-show="progress"
+      class="kbn-button">
+      ログオフ中...
+    </span>
   </div>
 </template>
 
@@ -34,7 +39,6 @@ export default {
     handleClick () {
       if (this.progress) { return }
       this.progress = true
-
       this.$nextTick(() => {
         this.logout()
           .then(() => {

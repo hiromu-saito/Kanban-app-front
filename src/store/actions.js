@@ -35,8 +35,11 @@ export default {
       })
       .catch(err => { throw err })
   },
-  logout: ({ commit }) => {
-    // TODO
-    throw new Error('logout action should be implement')
+  logout: ({ commit }, authInfo) => {
+    return Auth.logout(authInfo)
+      .then(() => {
+        commit(types.AUTH_LOGOUT)
+      })
+      .catch(err => { throw err })
   }
 }

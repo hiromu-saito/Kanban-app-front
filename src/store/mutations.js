@@ -27,6 +27,8 @@ export default {
       list.items = list.items.filter(item => item.id !== id)
     }
   },
-  [types.AUTH_LOGOUT] (state, payload) {
+  [types.AUTH_LOGOUT] (state) {
+    state.auth.userId = null
+    state.auth.token = null
   }
 }

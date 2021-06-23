@@ -24,4 +24,7 @@ module.exports = app => {
       res.status(404).json({message: 'ユーザーが登録されていません'})
     }
   })
+  app.post('/auth/logout',(req,res) => {
+    res.json({})
+  })
 }

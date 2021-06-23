@@ -5,12 +5,12 @@ export default {
     state.auth = payload
   },
   [types.FETCH_ALL_TASKLIST] (state, payload) {
-    state.lists = payload
+    state.board = {lists: payload}
   },
   [types.ADD_TASK] (state, payload) {
     const {id, listId, name} = payload
     let list
-    state.lists.forEach(l => {
+    state.board.lists.forEach(l => {
       if (l.id === listId) { list = l }
     })
     list.items.push({id, name})

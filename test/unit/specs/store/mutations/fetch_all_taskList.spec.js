@@ -8,7 +8,7 @@ describe('fetchList', () => {
         {id: 1, name: 'TODO', items: [{id: 1, name: 'task', description: 'description'}]},
         {id: 2, name: 'PENDING', items: [{id: 1, name: 'task', description: 'description'}]}
       ])
-    expect(state.lists.length).to.equal(2)
-    expect(state.lists[0].name).to.equal('TODO')
+    expect(state.board.lists.length).to.equal(2)
+    expect(state.board.lists[0].name).to.equal('TODO')
   })
 })

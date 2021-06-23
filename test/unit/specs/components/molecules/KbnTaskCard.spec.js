@@ -19,7 +19,7 @@ describe('KbnTaskCard', () => {
         actions
       })
       const taskCard = mount(KbnTaskCard, {
-        propsData: {task: {id: 1, listId: 1, name: 'sample'}},
+        propsData: {task: {id: 1, listId: 1, name: 'sample'}, listId: 1},
         store,
         localVue
       })

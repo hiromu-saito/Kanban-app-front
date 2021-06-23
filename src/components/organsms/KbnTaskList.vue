@@ -2,13 +2,15 @@
   <div class="task-list">
     <kbn-task-list-header
       :disabled="disabledAddTaskForm"
+      class="list-header"
       @click.prevent="addTaskForm">
       {{ list. name }}
     </kbn-task-list-header>
     <kbn-task-card
       v-for="item in list.items"
       :key="item.id"
-      :task="item"/>
+      :task="item"
+      class="task-card"/>
     <kbn-task-form
       v-show="disabledAddTaskForm"
       :list-id="list.id"
@@ -58,5 +60,15 @@ export default {
 <style scoped>
 .task-list{
   width: 200px;
+  border: 3px #000 solid;
+  height: 600px;
+}
+.list-header{
+  border: solid 3px #000;
+  margin: 0;
+}
+.task-card{
+  border: 3px solid #000;
+  border-radius: 5px;
 }
 </style>

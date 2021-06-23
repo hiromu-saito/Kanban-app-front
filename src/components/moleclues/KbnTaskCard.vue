@@ -35,7 +35,7 @@ export default {
   display: flex;
   justify-content: space-between;
   margin: 10px auto;
-  border: solid 1px #000;
+  /* border: solid 1px #000; */
 }
 
 </style>

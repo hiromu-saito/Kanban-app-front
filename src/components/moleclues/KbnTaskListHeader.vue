@@ -35,7 +35,7 @@ export default {
 .list-header{
   display: flex;
   justify-content:space-between ;
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
 }
 
 </style>

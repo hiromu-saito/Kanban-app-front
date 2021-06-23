@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="board-nav">
     <h1>Kanban-App</h1>
     <KbnButton
       :disabled="progress"
+      class="kbn-button"
       type="text"
       @click.prevent="handleClick">
       ログオフ
@@ -19,7 +20,7 @@ export default {
     KbnButton
   },
   props: {
-    logOff: {
+    logout: {
       type: Function,
       required: true
     }
@@ -35,7 +36,7 @@ export default {
       this.progress = true
 
       this.$nextTick(() => {
-        this.logOff()
+        this.logout()
           .then(() => {
             this.progress = false
           })
@@ -48,6 +49,23 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+h1{
+  display: inline-block;
+  margin: 0;
+  line-height: 80px;
+}
+
+.board-nav{
+  border: dotted 1px #000;
+  text-align: center;
+  height: 80px;
+  margin: 10px;
+}
+.kbn-button{
+  float: right;
+  height: 80px;
+  margin-right: 50px;
+}
 
 </style>

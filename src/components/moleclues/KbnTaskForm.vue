@@ -45,6 +45,7 @@ export default {
   methods: {
     addTask () {
       this.$emit('addTask', {listId: this.listId, name: this.name})
+      this.name = ''
     },
     cancelTask () {
       this.$emit('cancelTask')

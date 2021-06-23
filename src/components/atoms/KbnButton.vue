@@ -39,8 +39,11 @@ export default {
   padding:.6em 1.3em;
 }
 .kbn-button-text{
+  background-color: transparent;
   border: none;
-  padding-right: 0;
-  padding-left: 0;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  appearance: none;
 }
 </style>

@@ -27,4 +27,31 @@ module.exports = app => {
   app.post('/auth/logout',(req,res) => {
     res.json({})
   })
+  app.get('/lists', (req, res) => {
+    console.log('api')
+    res.json({lists: [
+        {id: 1, name: 'TODO', items: [
+            {id: 1, name: 'todo_task1', description: 'description'},
+            {id: 2, name: 'todo_task2', description: 'description'},
+            {id: 3, name: 'todo_task3', description: 'description'}
+        ]},
+        {id: 2, name: 'WIP', items: [
+            {id: 4, name: 'wip_task1', description: 'description'},
+            {id: 5, name: 'wip_task2', description: 'description'},
+            {id: 6, name: 'wip_task3', description: 'description'}
+        ]},
+        {id: 3, name: 'DONE', items: [
+            {id: 7, name: 'done_task1', description: 'description'},
+            {id: 8, name: 'done_task2', description: 'description'},
+            {id: 9, name: 'done_task3', description: 'description'}
+        ]},
+      ]})
+  }),
+  app.post('/tasks/add', (req, res) => {
+    res.json({id: 10})
+  })
+
+  app.post('/tasks/:id/remove', (req, res) => {
+    res.sendStatus(204)
+  })
 }

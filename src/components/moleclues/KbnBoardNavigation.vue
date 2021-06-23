@@ -41,9 +41,6 @@ export default {
       this.progress = true
       this.$nextTick(() => {
         this.logout()
-          .then(() => {
-            this.progress = false
-          })
           .catch((err) => {
             throw new Error(err.message)
           })

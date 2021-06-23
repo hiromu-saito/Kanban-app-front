@@ -10,6 +10,7 @@
       v-for="item in list.items"
       :key="item.id"
       :task="item"
+      :list-id="list.id"
       class="task-card"/>
     <kbn-task-form
       v-show="disabledAddTaskForm"

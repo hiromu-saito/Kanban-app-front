@@ -19,19 +19,16 @@ export default {
       lists: []
     }
   },
-  mounted () {
-    // this.$store.dispatch('fetchList')
-    //   .then(res => {
-    //     this.lists = res.lists
-    //   })
-    //   .catch(err => {
-    //     throw err
-    //   })
-    this.lists = [
-      {id: 1, name: 'TODO', items: [{id: 1, name: 'task', description: 'description'}]},
-      {id: 2, name: 'WIP', items: [{id: 1, name: 'task', description: 'description'}]},
-      {id: 3, name: 'DONE', items: [{id: 1, name: 'task', description: 'description'}]}
-    ]
+  created () {
+    this.$nextTick(() => {
+      this.$store.dispatch('fetchList')
+        .then(() => {
+          this.lists = this.$store.state.board.lists
+        })
+        .catch(err => {
+          throw err
+        })
+    })
   }
 }
 </script>

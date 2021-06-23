@@ -26,10 +26,7 @@ describe('KbnBoardNavigataion', () => {
           BoardNavigataion.vm.$nextTick(() => {
             expect(logoutStub.called).to.equal(true)
             expect(BoardNavigataion.vm.progress).to.equal(true)
-            BoardNavigataion.vm.$nextTick(() => {
-              expect(BoardNavigataion.vm.progress).to.equal(false)
-              done()
-            })
+            done()
           })
         })
       })

@@ -17,13 +17,19 @@ export default {
     task: {
       type: Object,
       required: true
+    },
+    listId: {
+      type: Number,
+      required: true
     }
   },
   methods: {
     removeTask () {
-      return this.$store.dispatch('removeTask', this.task)
-        .then(() => {})
-        .catch(() => alert('処理に失敗しました'))
+      const taskInfo = {listId: this.listId, id: this.task.id}
+      return this.$store.dispatch('removeTask', taskInfo)
+        .catch(() => {
+          alert('処理に失敗しました')
+        })
     }
   }
 }

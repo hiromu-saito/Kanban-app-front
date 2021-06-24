@@ -24,9 +24,12 @@ export default {
       })
       .catch(err => { throw err })
   },
-  updateTask: ({ commit }) => {
-    // TODO
-    throw new Error('updateTask action should be implement')
+  updateTask: ({ commit }, taskInfo) => {
+    return Tasks.updateTask(taskInfo)
+      .then(() => {
+        commit(types.UPDATE_TASK, taskInfo)
+      })
+      .catch(err => { throw err })
   },
   removeTask: ({ commit }, taskInfo) => {
     return Tasks.removeTask(taskInfo)

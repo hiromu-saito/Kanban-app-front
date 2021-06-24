@@ -16,8 +16,17 @@ export default {
     list.items.push({id, name})
   },
   [types.UPDATE_TASK] (state, payload) {
-    // TODO;
-    throw new Error('UPDATE_TASKmutation should be implemented')
+    const {id, listId, name, description} = payload
+    let list
+    state.board.lists.forEach(l => {
+      if (l.id === listId) { list = l }
+    })
+    list.items.forEach(i => {
+      if (i.id === id) {
+        i.name = name
+        i.description = description
+      }
+    })
   },
   [types.REMOVE_TASK] (state, payload) {
     const {id, listId} = payload

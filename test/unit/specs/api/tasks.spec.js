@@ -103,4 +103,30 @@ describe('TasksAPIモジュール', () => {
       })
     })
   })
+  describe('updateTask', () => {
+    const taskInfo = {
+      id: 1,
+      name: 'task',
+      description: 'description',
+      listId: 1
+    }
+    describe('APIが失敗', () => {
+      it('エラーが返ってくること', done => {
+        const message = 'failed updataTask'
+        const adapter = config => {
+          return new Promise((resolve, reject) => {
+            const err = new Error(message)
+            err.response = {data: message}
+            reject(err)
+          })
+        }
+        const tasksMock = mockTasks(adapter)
+        tasksMock.updateTask(taskInfo)
+          .catch(err => {
+            expect(err.message).to.equal(message)
+          })
+          .then(done, done)
+      })
+    })
+  })
 })

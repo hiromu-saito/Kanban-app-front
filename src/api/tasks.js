@@ -35,6 +35,7 @@ export default {
   updateTask: (taskInfo) => {
     return new Promise((resolve, reject) => {
       client.post('/tasks/:' + taskInfo.id + '/update')
+        .then(() => resolve())
         .catch(err => {
           reject(new Error(err.response.data.message || err.message))
         })

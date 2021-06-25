@@ -23,7 +23,7 @@ describe('KbnTaskCard', () => {
         store,
         localVue
       })
-      taskCard.find('button').trigger('click')
+      taskCard.findAll('button').at(1).trigger('click')
       expect(actions.removeTask.called).to.equal(true)
       expect(actions.removeTask.args[0][1].id).to.equal(1)
       expect(actions.removeTask.args[0][1].listId).to.equal(1)

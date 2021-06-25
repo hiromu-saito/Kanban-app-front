@@ -28,6 +28,7 @@ export default {
     return Tasks.updateTask(taskInfo)
       .then(() => {
         commit(types.UPDATE_TASK, taskInfo)
+        return Promise.resolve()
       })
       .catch(err => { throw err })
   },

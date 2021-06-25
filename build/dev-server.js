@@ -25,10 +25,9 @@ module.exports = app => {
     }
   })
   app.post('/auth/logout',(req,res) => {
-    res.json({})
+    res.sendStatus(200)
   })
   app.get('/lists', (req, res) => {
-    console.log('api')
     res.json({lists: [
         {id: 1, name: 'TODO', items: [
             {id: 1, name: 'todo_task1', description: 'description'},
@@ -53,5 +52,8 @@ module.exports = app => {
 
   app.post('/tasks/:id/remove', (req, res) => {
     res.sendStatus(204)
+  })
+  app.post('/tasks/:id/update', (req, res) => {
+    res.sendStatus(200)
   })
 }

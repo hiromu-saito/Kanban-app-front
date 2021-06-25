@@ -1,17 +1,33 @@
 <template>
   <div class="task-card">
-    {{ task.name }}
-    <kbn-icon @click="removeTask">×</kbn-icon>
+    <kbn-button
+      type="text"
+      class="kbn-button"
+      @click="openMordal">
+      {{ task.name }}
+    </kbn-button>
+    <kbn-icon
+      class="kbn-icon"
+      @click="removeTask">×</kbn-icon>
+    <kbn-task-detail-mordal
+      v-show="overlay"
+      :task="taskInfo"
+      @close-mordal="closeMordal"
+    />
   </div>
 </template>
 
 <script>
+import KbnButton from '../atoms/KbnButton.vue'
 import KbnIcon from '../atoms/KbnIcon.vue'
+import KbnTaskDetailMordal from '../templates/KbnTaskDetailMordal.vue'
 
 export default {
   name: 'KbnTaskCard',
   components: {
-    KbnIcon
+    KbnIcon,
+    KbnTaskDetailMordal,
+    KbnButton
   },
   props: {
     task: {
@@ -23,6 +39,17 @@ export default {
       required: true
     }
   },
+  data () {
+    return {
+      overlay: false,
+      taskInfo: {}
+    }
+  },
+  mounted () {
+    this.taskInfo = this.task
+    this.taskInfo.listId = this.listId
+    console.log(this.taskInfo)
+  },
   methods: {
     removeTask () {
       const taskInfo = {listId: this.listId, id: this.task.id}
@@ -30,6 +57,12 @@ export default {
         .catch(() => {
           alert('処理に失敗しました')
         })
+    },
+    openMordal () {
+      this.overlay = true
+    },
+    closeMordal () {
+      this.overlay = false
     }
   }
 }
@@ -37,11 +70,19 @@ export default {
 
 <style scoped>
 .task-card{
-  width: 90%;
   display: flex;
-  justify-content: space-between;
   margin: 10px auto;
   /* border: solid 1px #000; */
+  height: 26px;
 }
-
+.kbn-button{
+  width: 90%;
+  text-align: left;
+}
+.kbn-icon{
+  width: 10%;
+}
+.kbn-icon:hover{
+  font-weight: bold;
+}
 </style>

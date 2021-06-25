@@ -71,5 +71,6 @@ export default {
 .task-card{
   border: 3px solid #000;
   border-radius: 5px;
+  cursor: pointer;
 }
 </style>

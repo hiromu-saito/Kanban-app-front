@@ -3,7 +3,7 @@ import client from './client'
 export default {
   removeTask: taskInfo => {
     return new Promise((resolve, reject) => {
-      client.post('/tasks/:' + taskInfo.id + '/remove', taskInfo)
+      client.delete('/tasks/:' + taskInfo.id + '/remove', taskInfo)
         .then(() => { resolve() })
         .catch(err => {
           reject(new Error(err.response.data.message || err.message))
@@ -34,7 +34,7 @@ export default {
   },
   updateTask: (taskInfo) => {
     return new Promise((resolve, reject) => {
-      client.post('/tasks/:' + taskInfo.id + '/update')
+      client.put('/tasks/' + taskInfo.id + '/update', taskInfo)
         .then(() => resolve())
         .catch(err => {
           reject(new Error(err.response.data.message || err.message))

@@ -12,7 +12,7 @@ export default {
   },
   logout: authInfo => {
     return new Promise((resolve, reject) => {
-      client.post('/auth/logout', authInfo)
+      client.delete('/auth/logout', authInfo)
         .then(() => {
           resolve()
         })

@@ -2,14 +2,14 @@
   <div>
     <kbn-board-navigation
       :logout="logout"/>
-    <kbn-board-task/>
+    <kbn-board-task :lists="lists"/>
   </div>
 </template>
 
 <script>
 import KbnBoardTask from '../organsms/KbnBoardTask'
 import KbnBoardNavigation from '../moleclues/KbnBoardNavigation.vue'
-
+import { mapState } from 'vuex'
 /* eslint-disable */
 export default{
   name: 'KbnBoardView',
@@ -17,6 +17,12 @@ export default{
      KbnBoardTask,
      KbnBoardNavigation
   },
+    computed: mapState({
+    lists: state => { 
+      console.log('state')
+      return state.board.lists
+    }
+  }),
   methods:{
     logout(){
       const authInfo = this.$store.state.auth
@@ -34,7 +40,14 @@ export default{
   //   throw new Error('レンダリングに失敗しました！')
   // }
   // */
-}
+},
+  created() {
+      console.log('created')
+         this.$store.dispatch('fetchList')
+          .catch(err => {
+            throw err
+          })
+  }
 }
 
 /* eslint-enable */

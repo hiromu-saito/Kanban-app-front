@@ -48,7 +48,6 @@ export default {
   mounted () {
     this.taskInfo = this.task
     this.taskInfo.listId = this.listId
-    console.log(this.taskInfo)
   },
   methods: {
     removeTask () {

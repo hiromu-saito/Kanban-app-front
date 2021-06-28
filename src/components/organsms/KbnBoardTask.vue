@@ -11,24 +11,15 @@
 
 <script>
 import KbnTaskList from './KbnTaskList'
+
 export default {
   name: 'KbnBoardTask',
   components: { KbnTaskList },
-  data () {
-    return {
-      lists: []
+  props: {
+    lists: {
+      type: Array,
+      default: () => []
     }
-  },
-  created () {
-    this.$nextTick(() => {
-      this.$store.dispatch('fetchList')
-        .then(() => {
-          this.lists = this.$store.state.board.lists
-        })
-        .catch(err => {
-          throw err
-        })
-    })
   }
 }
 </script>

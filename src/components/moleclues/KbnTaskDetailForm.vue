@@ -47,6 +47,8 @@ export default {
     updateTask () {
       this.$store.dispatch('updateTask', this.inputTask)
         .then(() => {
+          this.$store.dispatch('fetchList')
+            .catch(err => { throw err })
           this.$emit('close-mordal')
         })
         .catch(err => {

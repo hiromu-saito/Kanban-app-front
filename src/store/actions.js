@@ -39,6 +39,22 @@ export default {
       })
       .catch(err => { throw err })
   },
+  moveToTask: ({commit}, {listId, id}) => {
+    commit(types.MOVE_TO_TASK, {listId, id})
+    return Promise.resolve()
+  },
+  moveFromTask: ({commit}, {listId, id}) => {
+    commit(types.MOVE_FROM_TASK, {listId, id})
+    return Promise.resolve()
+  },
+  executionMoveTask: ({commit, state}) => {
+    const {target, from, to} = state.dragging
+    return Tasks.executionMoveTask({id: target, from, to})
+      .then(() => {
+        commit(types.EXECUTION_MOVE_TASK, {target, from, to})
+      })
+      .catch(err => { throw err })
+  },
   logout: ({ commit }, authInfo) => {
     return Auth.logout(authInfo)
       .then(() => {

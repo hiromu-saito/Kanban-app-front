@@ -40,5 +40,14 @@ export default {
           reject(new Error(err.response.data.message || err.message))
         })
     })
+  },
+  executionMoveTask: ({id, from, to}) => {
+    return new Promise((resolve, reject) => {
+      client.post('/tasks/' + id + '/move', {from, to})
+        .then(() => resolve())
+        .catch(err => {
+          reject(new Error(err.response.data.message || err.message))
+        })
+    })
   }
 }

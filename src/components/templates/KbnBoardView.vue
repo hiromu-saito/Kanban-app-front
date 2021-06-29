@@ -19,7 +19,6 @@ export default{
   },
     computed: mapState({
     lists: state => { 
-      console.log('state')
       return state.board.lists
     }
   }),
@@ -42,7 +41,6 @@ export default{
   // */
 },
   created() {
-      console.log('created')
          this.$store.dispatch('fetchList')
           .catch(err => {
             throw err

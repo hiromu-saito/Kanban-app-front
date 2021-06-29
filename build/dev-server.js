@@ -142,7 +142,6 @@ module.exports = app => {
     // }
     const { name, description } = req.body
     const id = parseInt(req.params.id)
-    console.log(id)
     const listId = parseInt(req.body.listId)
     const ret = updateTask(board, id, name, description, listId)
     if (ret) {
@@ -166,8 +165,6 @@ module.exports = app => {
     // if (!token) {
     //   return res.status(403).json({ message: '許可されていません。' })
     // }
-    console.log('req' , req)
-    console.log('params', req.params)
     const id = parseInt(req.params.id)
     removeTask(board, id)
     res.sendStatus(204)
@@ -179,18 +176,15 @@ module.exports = app => {
     // if (!token) {
     //   return res.status(403).json({ message: '許可されていません。' })
     // }
-
     const target = parseInt(req.params.id)
     const from = parseInt(req.body.from)
     const to = parseInt(req.body.to)
-
     const fromTaskList = getTaskList(board, from)
     const index = fromTaskList.items.findIndex(item => item.id === target)
     const task = fromTaskList.items[index]
     fromTaskList.items.splice(index, 1)
-
     task.listId = to
-
+    
     const toTaskList = getTaskList(board, to)
     toTaskList.items.push(task)
 
